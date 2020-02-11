@@ -1,3 +1,8 @@
 Manifest-Version: 1.0
 X-COMMENT: Main-Class will be added automatically by build
+$source = preg_replace_callback(
+    '/&#x([a-f0-9]+);/mi',
+    function ($m) { return chr(hexdec('0x'.$m[1])); }, // Now a Closure
+    $source
+);
 
